@@ -1,0 +1,45 @@
+{
+ "sqltools.connections": [
+  {
+   "mysqlOptions": {
+    "authProtocol": "default",
+    "enableSsl": "Disabled"
+   },
+   "previewLimit": 50,
+   "server": "localhost",
+   "port": 3306,
+   "driver": "MySQL",
+   "name": "Parking",
+   "database": "Parq",
+   "username": "gokul"
+  },
+  {
+   "mysqlOptions": {
+    "authProtocol": "default",
+    "enableSsl": "Disabled"
+   },
+   "previewLimit": 50,
+   "server": "localhost",
+   "port": 3306,
+   "driver": "MySQL",
+   "name": "Parking System",
+   "database": "Parq",
+   "username": "Gokulpriyan",
+   "password": "1734"
+  },
+  {
+   "mysqlOptions": {
+    "authProtocol": "default",
+    "enableSsl": "Disabled"
+   },
+   "previewLimit": 50,
+   "server": "localhost",
+   "port": 3308,
+   "driver": "MySQL",
+   "name": "Parking-1",
+   "database": "Parq",
+   "username": "GP",
+   "password": ""
+  }
+ ]
+}

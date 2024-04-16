@@ -1,0 +1,4 @@
+Primary - #258EA6
+Secondary - #21242A
+backdrop - #15171B
+text - #ADADAD
