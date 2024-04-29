@@ -7,5 +7,8 @@
       "**/*"
     ]
   },
+  "splash": {
+   "image":"src/car.png"
+  },
   "name": "Parq"
 }

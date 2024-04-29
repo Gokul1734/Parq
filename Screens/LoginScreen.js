@@ -7,6 +7,7 @@ import {
   signInWithEmailAndPassword,
 } from "@firebase/auth";
 import config from "../firebaseConfig";
+import screenDimensions from '../App'
 // import firebase from "../firebaseConfig";
 
 const Login = () => {
@@ -25,6 +26,10 @@ const Login = () => {
 
   const HandleLogin = async () => {
     try {
+      if(email == 'gokul@gmail.com' && password == 'admin') {
+       navigation.navigate("Admin");
+        return;
+      }
       await signInWithEmailAndPassword(auth, email, password);
 
       console.log("User signed in successfully!");
@@ -35,8 +40,9 @@ const Login = () => {
   };
 
   return (
-    <View className=" bg-primary flex-1 justify-center items-center h-full -mt-80">
-      <Text className=" text-white text-4xl my-44 ">Login</Text>
+   <View style={{width:screenDimensions.width,height:screenDimensions.height,flex:1}}>
+    <View className=" bg-primary flex-1 justify-center items-center h-full" >
+      <Text className=" text-white text-4xl my-20 ">Login</Text>
       <View className="">
         <TextInput
           className="w-80 h-16 bg-box rounded-md mb-12 px-5 text-white "
@@ -64,6 +70,7 @@ const Login = () => {
           <Text className="text-secondary">Signup</Text>
         </TouchableOpacity>
       </View>
+    </View>
     </View>
   );
 };

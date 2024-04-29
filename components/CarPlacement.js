@@ -13,13 +13,17 @@ import {
   ChevronRightIcon,
 } from "react-native-heroicons/solid";
 import { useNavigation } from "@react-navigation/native";
+import { ScrollView } from "react-native-gesture-handler";
 
-const CarPlacement = ({ floor, vname }) => {
+const CarPlacement = ({ floor,location, vname }) => {
   const parkingData = [
     [false, true, false],
     [true, true, false],
     [false, true, true],
-    [false, false, false],
+    // [false, false, false],
+    // [true, true, false],
+    // [false, false, true],
+
   ];
   // console.log(vname);
 
@@ -88,11 +92,14 @@ const CarPlacement = ({ floor, vname }) => {
 
   return (
     <View className="flex  justify-center items-center">
-      <View className="flex  justify-center items-center">
+      <View style={{alignItems:'center',justifyContent:'center'}}>
         <RenderRow cols={"A"} data={parkingData[0]} />
         <RenderRow cols={"B"} data={parkingData[1]} />
         <RenderRow cols={"C"} data={parkingData[2]} />
-        <RenderRow cols={"D"} data={parkingData[3]} />
+        {/* <RenderRow cols={"D"} data={parkingData[3]} />
+        <RenderRow cols={"E"} data={parkingData[4]} />
+        <RenderRow cols={"F"} data={parkingData[5]} /> */}
+
       </View>
       {selection ? (
         <TouchableOpacity
@@ -101,9 +108,10 @@ const CarPlacement = ({ floor, vname }) => {
             navigation.navigate("QTicket", {
               slot: selection,
               vname: vname,
+              location : location
             });
           }}
-          className=" flex-row items-center justify-center mt-72 bg-secondary p-4 mx-5 w-80 rounded-full"
+          className=" flex-row items-center justify-center mt-10 bg-secondary p-4 mx-5 w-80 rounded-full"
         >
           <Text className="text-xl mx-12 font-bold text-box ">
             {selection} - BOOK SLOT

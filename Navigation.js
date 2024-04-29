@@ -11,6 +11,11 @@ import VehicleAdder from "./Screens/VehicleAdder";
 import Selector from "./Screens/Selector";
 import Slot from "./Screens/Slot";
 import QTicket from "./Screens/QTicket";
+import AdminScreen from "./Screens/AdminScreen";
+import Camera from "./Screens/Camera";
+import Users from "./Screens/Users";
+import LocationAdder from "./Screens/LocationAdder";
+import Userinfo from "./Screens/Userinfo";
 
 // import Demo from "./Screens/Demo";
 const Stack = createStackNavigator();
@@ -23,6 +28,36 @@ const Navigation = () => {
           name="Login"
           options={{ headerShown: false }}
           component={Login}
+          // options={{ title: "Login" }}
+        />
+        <Stack.Screen
+          name="Admin"
+          options={{ headerShown: false }}
+          component={AdminScreen}
+          // options={{ title: "Login" }}
+        />
+        <Stack.Screen
+          name="Camera"
+          options={{ headerShown: false }}
+          component={Camera}
+          // options={{ title: "Login" }}
+        />
+        <Stack.Screen
+          name="Location"
+          options={{ headerShown: false }}
+          component={LocationAdder}
+          // options={{ title: "Login" }}
+        />
+        <Stack.Screen
+          name="Users"
+          options={{ headerShown: false }}
+          component={Users}
+          // options={{ title: "Login" }}
+        />
+        <Stack.Screen
+          name="Info"
+          options={{ headerShown: false }}
+          component={Userinfo}
           // options={{ title: "Login" }}
         />
         <Stack.Screen

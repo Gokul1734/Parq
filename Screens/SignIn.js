@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { View, Text, TextInput, Button, TouchableOpacity } from "react-native";
 import { useNavigation } from "@react-navigation/native";
+import { screenDimensions } from "../App";
 // import { handleSignIn } from "../firebaseConfig";
 import {
   getAuth,
@@ -11,6 +12,7 @@ import {
 } from "@firebase/auth";
 import config from "../firebaseConfig";
 import { getDatabase, ref, set } from "firebase/database";
+import { ScrollView } from "react-native-gesture-handler";
 
 const auth = getAuth(config);
 const db = getDatabase(config);
@@ -57,11 +59,13 @@ const SignIn = () => {
   };
 
   return (
-    <View className=" bg-primary flex-1 justify-center items-center h-full -mt-30">
-      <Text className=" text-white text-4xl my-10 ">Signup</Text>
+    <View className=" bg-primary flex-1 justify-center items-center h-full p-5 ">
+     <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={{alignItems:'center'}} style={{width:screenDimensions.width*0.8,height:screenDimensions.height*0.3,flex:1}}>
+      <Text className=" text-white text-3xl my-10 ">Signup</Text>
       <View className="">
         <TextInput
-          className="w-80 h-16 bg-box rounded-md mb-12 px-5 text-white "
+          className="h-16 bg-box rounded-md mb-10 px-5 text-white"
+          style={{width:screenDimensions.width*0.8,height:screenDimensions.height*0.09}}
           placeholderTextColor={'gray'}
           placeholder="Email"
           onChangeText={setEmail}
@@ -69,7 +73,9 @@ const SignIn = () => {
           keyboardType="email-address"
         />
         <TextInput
-          className="w-80 h-16 bg-box rounded-md mb-12 px-5 text-white "
+          className="w-80 h-16 bg-box rounded-md mb-10 px-5 text-white "
+          style={{width:screenDimensions.width*0.8,height:screenDimensions.height*0.09}}
+
           placeholderTextColor={'gray'}
           placeholder="Name"
           onChangeText={setName}
@@ -77,7 +83,9 @@ const SignIn = () => {
           keyboardType="default"
         />
         <TextInput
-          className="w-80 h-16 bg-box rounded-md mb-12 px-5 text-white "
+          className="w-80 h-16 bg-box rounded-md mb-10 px-5 text-white "
+          style={{width:screenDimensions.width*0.8,height:screenDimensions.height*0.09}}
+
           placeholderTextColor={'gray'}
           placeholder="Phone Number"
           onChangeText={setPhone}
@@ -86,7 +94,9 @@ const SignIn = () => {
           keyboardType="number-pad"
         />
         <TextInput
-          className="w-80 h-16 bg-box rounded-md mb-12 px-5 text-white "
+          className="w-80 h-16 bg-box rounded-md mb-10 px-5 text-white "
+          style={{width:screenDimensions.width*0.8,height:screenDimensions.height*0.09}}
+
           placeholderTextColor={'gray'}
           placeholder="Password"
           onChangeText={setPassword}
@@ -94,7 +104,8 @@ const SignIn = () => {
           secureTextEntry
         />
         <TextInput
-          className="w-80 h-16 bg-box rounded-md mb-12 px-5 text-white "
+          className="w-80 h-16 bg-box rounded-md mb-10 px-5 text-white "
+          style={{width:screenDimensions.width*0.8,height:screenDimensions.height*0.09}}
           placeholderTextColor={'gray'}
           placeholder="Confirm Password"
           onChangeText={setConfirmpassword}
@@ -102,11 +113,12 @@ const SignIn = () => {
           secureTextEntry
         />
       </View>
-      <TouchableOpacity onPress={handleAuthentication}>
+      <TouchableOpacity onPress={handleAuthentication} className='items-center'>
         <Text className="text-white bg-secondary p-3 px-5 font-bold rounded-lg">
           Signup
         </Text>
       </TouchableOpacity>
+      </ScrollView>
     </View>
   );
 };

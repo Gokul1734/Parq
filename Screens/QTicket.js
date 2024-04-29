@@ -1,18 +1,19 @@
 import { getAuth } from "@firebase/auth";
 import { useNavigation, useRoute } from "@react-navigation/native";
 import React, { useEffect } from "react";
-import { Text, View } from "react-native";
+import { ScrollView, Text, View } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { ChevronLeftIcon } from "react-native-heroicons/solid";
 import QRCode from "react-native-qrcode-svg";
 import { child, get } from "firebase/database";
 import { config, db } from "../firebaseConfig";
+import { screenDimensions } from "../App";
 
 const QTicket = () => {
   const navigation = useNavigation();
   const uid = getAuth(config).currentUser?.uid;
-  const { slot, vname } = useRoute().params;
-
+  const { slot, location,vname } = useRoute().params;
+  console.log(slot,location,vname);
   useEffect(() => {
     get(child(db, `users/${uid}/${"Bike" && "Car"}/${vname}`))
       .then((snapshot) => {
@@ -47,8 +48,8 @@ const QTicket = () => {
   ];
   const jsonString = JSON.stringify(jsonData);
   return (
-    <View className="bg-primary flex-1   ">
-      <View className="flex-row  m-2 mt-10 mx-6 ">
+    <ScrollView className="bg-primary flex-1   ">
+      <View className="flex-row  m-2 mt-10 mx-2 ">
         <TouchableOpacity
           onPress={() => {
             navigation.goBack();
@@ -59,9 +60,13 @@ const QTicket = () => {
         </TouchableOpacity>
       </View>
       <View className="flex items-center">
-        <View className=" bg-secondary items-center p-6 mt-16 h-72 w-72 rounded-md">
+        <View 
+        className=" bg-secondary items-center p-6 mt-16 h-72 w-72 rounded-md"
+        style={{width:screenDimensions.width*0.8,height:screenDimensions.height*0.45}}
+        >
           <QRCode
             className=" bg-secondary items-center mt-40 h-72 w-72"
+            style={{width:screenDimensions.width*0.8,height:screenDimensions.height*0.45}}
             value={jsonString}
             size={240}
             color="#258EA6"
@@ -72,24 +77,25 @@ const QTicket = () => {
         </Text>
       </View>
       <View className="flex justify-start items-start mt-24 mx-10 ">
-        <Text className="text-xl text-secondary">Date : </Text>
+        <Text className="text-xl text-secondary">Date : {time.toLocaleDateString()}  {time.toLocaleTimeString()} </Text>
         <Text className="text-xl text-secondary">Slot ID : {slot}</Text>
         <Text className="text-xl text-secondary">
           Parking Location : {vname}
         </Text>
         <Text className="text-xl text-secondary">
-          Expiry : 15-04-2024 13.52.23
+          Expiry : 24 Hrs
         </Text>
       </View>
       <TouchableOpacity
         onPress={() => {
           navigation.navigate("Home");
         }}
-        className="flex-row mt-16 items-center justify-center bg-red-500 p-4 mx-12 w-80 rounded-full"
+        className="flex-row mt-14 items-center justify-center bg-red-500 p-4 mx-7 w-80 rounded-full mb-5"
+        style={{width:screenDimensions.width*0.8,height:screenDimensions.height*0.1}}
       >
         <Text className="text-xl font-semibold">Cancel Booking</Text>
       </TouchableOpacity>
-    </View>
+    </ScrollView>
   );
 };
 

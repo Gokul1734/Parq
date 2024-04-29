@@ -1,6 +1,7 @@
 import { getAuth, onAuthStateChanged, signOut } from "@firebase/auth";
 import { useNavigation, useRoute } from "@react-navigation/native";
 import React, { useEffect, useState } from "react";
+import { screenDimensions } from "../App";
 import {
   View,
   Text,
@@ -21,6 +22,8 @@ import car from "../src/car.png";
 import profile from "../src/profile.png";
 
 const HomeScreen = () => {
+
+ 
 
  const locations = ['Anna Nagar Metro','Ramapuram','Phoenix Mall'
  ]
@@ -71,7 +74,7 @@ const HomeScreen = () => {
      <TouchableOpacity
        className="bg-box m-3 py-10 mx-6 pl-4 rounded-2xl flex"
        onPress={() => {
-         navigation.navigate("Slot", item);
+         navigation.navigate("Slot", {item , vname});
        }}
      >
        <Text className="text-secondary text-xl font-extrabold ">{item}</Text>
@@ -79,7 +82,7 @@ const HomeScreen = () => {
    );
   return (
     <SafeAreaView className="bg-primary flex-1">
-      <View className="flex-row justify-between m-2 mt-9 mx-4 ">
+      <View className="flex-row justify-between m-2 mt-9 mx-4 " style={{width:screenDimensions.width*0.8,height:screenDimensions.height*0.1}}>
         <TouchableOpacity
           onPress={() => {
             navigation.goBack();
@@ -93,7 +96,7 @@ const HomeScreen = () => {
           <Image className="border-2 rounded-full" source={profile} />
         </View>
       </View>
-      <View className="mb-10 mt-4">
+
         <View className="mx-4 mb-3 flex-row justify-between items-center border border-secondary rounded-full">
           <TextInput
             placeholder="Search Parking Locations"
@@ -111,7 +114,7 @@ const HomeScreen = () => {
             <XMarkIcon size="25" color="white" />
           </TouchableOpacity>
         </View>
-      </View>
+
       {/* <View className="m-3">
         <Button
           title="Book Slots"

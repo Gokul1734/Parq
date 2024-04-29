@@ -11,10 +11,11 @@ import {
 import { ChevronLeftIcon, XMarkIcon } from "react-native-heroicons/solid";
 import { useNavigation, useRoute } from "@react-navigation/native";
 import CarPlacement from "../components/CarPlacement";
+import { screenDimensions } from "../App";
 const Slot = () => {
   const navigation = useNavigation();
-  const vname = useRoute().params;
-  console.log(vname);
+  const {item,vname} = useRoute().params;
+  console.log(vname,item);
   const data = [
     { id: 1, name: "Item 1" },
     { id: 2, name: "Item 2" },
@@ -50,6 +51,7 @@ const Slot = () => {
   );
 
   return (
+   <View style={{width:screenDimensions.width,height:screenDimensions.height,flex:1}}>
     <View className="bg-primary flex-1 ">
       <View className="flex-row  m-8 mt-9 mx-7 ">
         <TouchableOpacity
@@ -72,11 +74,12 @@ const Slot = () => {
           />
         </View>
         {selectedItem && (
-          <View className=" h-4/5  p-2">
-            <CarPlacement floor={selectedItem.name} vname={vname} />
+          <View className="  p-2">
+            <CarPlacement floor={selectedItem.name} location={item} vname={vname} />
           </View>
         )}
       </View>
+    </View>
     </View>
   );
 };

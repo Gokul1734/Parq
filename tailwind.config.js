@@ -15,6 +15,8 @@ module.exports = {
         primary: "#15171B",
         secondary: "#258EA6",
         box: "#21242A",
+        text: "#ADADAD",
+        backdrop: "#15171B"
       },
     },
   },
