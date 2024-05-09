@@ -2,7 +2,9 @@ Instructions for Deploying the Parq Application on EXPO
 
 Run the requirements.txt file to install all dependencies
 
-```cmd npm install -r requirements.txt ```
+```cmd 
+npm install -r requirements.txt 
+```
 
 After installing all dependencies start the expo app 
 ```
