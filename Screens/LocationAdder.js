@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect,useId } from "react";
 import { View, Text, TextInput, Button, TouchableOpacity, Linking } from "react-native";
 import { useNavigation } from "@react-navigation/native";
-import { v4 } from 'uuid';
+import 'react-native-get-random-values';
+import { v4 as uuidv4, v4 } from 'uuid';
 // import { handleSignIn } from "../firebaseConfig";
 import {
   getAuth,
@@ -9,6 +10,7 @@ import {
   signInWithEmailAndPassword,
   onAuthStateChanged,
   signOut,
+  reload,
 } from "@firebase/auth";
 import config from "../firebaseConfig";
 import { child, getDatabase, ref, set } from "firebase/database";
@@ -26,8 +28,11 @@ const SignIn = () => {
   const [user, setUser] = useState(null); // Track user authentication state
   const [isLogin, setIsLogin] = useState(true);
   const [Description, setDescription] = useState("");
+  const [id,setId] = useState('');
   const navigation = useNavigation();
-  console.log(v4());
+  // console.log(v4().slice(0,8));
+
+  // console.log(useId());
 
   // useEffect(() => {
   //   const unsubscribe = onAuthStateChanged(auth, (user) => {
@@ -39,13 +44,16 @@ const SignIn = () => {
 
  const addLocation = () => {
   // const URL = `https://www.google.com/maps/place/${Geolocation}`;
-  set(ref(db,`/locations/L${MaxSlots}`), {
+  set(ref(db,`/locations/L${v4().slice(0,8)}`), {
     Location : Location,
     Geolocation : Geolocation,
     MaxSlots: MaxSlots,
     Floors : Floors,
     Description : Description,
   })
+
+  alert("Location Added to Database Successfully !!")
+  navigation.navigate('Location');
 
 
   // Linking.openURL(`https://www.google.com/maps/place/${Geolocation}`);
