@@ -5,9 +5,9 @@ Run the requirements.txt file to install all dependencies
 >> npm install -r requirements.txt
 
 After installing all dependencies start the expo app 
-
->> npx expo start
-
+```cmd
+npx expo start
+```
 Open EXPO in mobile or android simulator using android studio
 Scan the QR Code to run the application on the device (Android/Ios)
 
