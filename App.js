@@ -10,5 +10,6 @@ export default function App() {
    <View style={{width:screenDimensions.width,height:screenDimensions.height}}>
     <Navigation />
    </View>
+   <ABV></ABV>
   );
 }
